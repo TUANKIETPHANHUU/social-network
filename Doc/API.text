@@ -1,82 +1,131 @@
 Viết API 
 1.Auth(Đăng ký)
 POST /api/auth/register
+
 + Đăng nhập
 POST /api/auth/login
+
 2.User
 2.1 Lấy thông tin user
 GET /api/users/:id
+
 2.2. Cập nhập users
-PUT /api/users/:id
+PUT /api/users/profile:id
+
+2.3 Tìm kiếm người dùng  Tìm kiếm người dùng theo usernam
+GET /api/users/search?q=...: 
+
 3. Friends
-3.1 Gởi lời mời
-POST /api/friends/request
+3.1 Gởi lời mời (gửi lời mời tới usedid)
+POST /api/friends/request/:userId 
+
 3.2. Chấp nhận
 POST /api/friends/accept/:requestId
-3.3. Danh sách bạn bè
-POST /api/friends/:usersId
+
+3.3. Danh sách bạn bè id người dùng được lấy từ ss hoặc ...)
+POST /api/friends 
+
 4. Block
-POST /api/block
-DELETE/api/block
+4.1 Block người nào đó
+POST /api/block/:userId
+
+4.2 Hủy Block người nào đó
+DELETE/api/block/:userId
+
+4.3 Lấy danh sách bị block (id người dùng được lấy từ ss hoặc ...)
+GET /api/block 
+
 5.POST
 5.1 Tạo post
 POST /api/posts
+
 5.2 Lấy feed
 GET/api/posts/feed/:userId
+
 5.3. Chi tiết post
 GET /api/posts/:id
+
 5.4 Xóa POST
 DELETE /api/:id
+
 6.MEDIA
 POST/api/media
 GET  /api/media/:postId
 DELETE /api/media/:id
 7. reactions
-7.1 LIKE
+7.1 LIKE (id người dùng được lấy từ ss hoặc ...)
 POST /api/reactions
-7.2 Danh sách reaction
+
+7.2 Danh sách reaction (id người dùng được lấy từ ss hoặc ...)
 GET /api/reactions/:postId
+
 8. Comments
-8.1. Thêm comments
-POST /api/comments
-8.2 Trả lời bình luận
-POST /api/comments/reply
+8.1. Thêm comments (id người dùng được lấy từ ss hoặc ...)
+POST /api/comments/:postId
+
+8.2 Trả lời bình luận 
+POST /api/comments/reply/:commentId
+
 8.3 Lấy comment
 GET /api/comments/:postId
+
 9. Share
-POST/api/shares
-GET /api/shares/:postId
+9.1 Share 
+POST/api/shares/:postId
+
 10. Story
+10.1 Story upload
 POST /api/stories
-GET/api/stories/:userId
-DELETE/api/stories/:Id
+
+10.1 xem Story tất cả bạn bè
+GET/api/stories
+
+10.1 Xóa stories của chính mình
+DELETE/api/stories
+
 11. Group
+11.1 Tạo nhóm với bản thân
 POST /api/groups
+
+11.2 Lấy danh sách của các nhóm 
 GET /api/groups
+
+11.3 Lấy danh chi tiết nhóm
 PUT /api/groups/:id
+
+11.4 Xóa nhóm đó
 DELETE/api/groups/:id
+
+11.5 Rời nhóm đó
+PUT /api/groups/:id/leave
+
 12.Member
-POST /api/groups/:id/join
-DELETE /api/groups/:id/leave
-GET /api/groups/:id/members
+12.1 Add thành viên vào nhóm
+POST /api/groups/:Groupid/:usedid
+
+12.2 Xóa thành viên khỏi nhóm
+DELETE /api/groups/:Groupid/:usedid
+
+
 13.CHAT
-13.1. Tạo conversation
-POST /api/conversations
-13.2.  Thêm người vào chat
-POST /api/conversations/:id/users
-13.3. Lấy conversation
-GET /api/conversation/:usersId
-14. Gửi messager
-POST /api/messages
-14.1.Lấy messager
-GET /api/messages/:conversationId
-14.2.Đánh dấu đã đọc
-POST /api/messages/read
-15. Thông báo
+13.1. Tạo conversation với ai đó
+POST /api/conversations/:usedid
+
+13.2 Lấy danh sách tin nhắn của một người
+GET /api/conversations/:usedid
+
+13.3 Gửi tin nhắn cho người đó
+POST /api/conversations/:usedid/:mess
+
+13.4 Lấy danh sách các conversation
+POST /api/conversations/
+
+14. Thông báo tin nhắn
+14.1 Thông báo của user đó
 GET /api/notification/:userId
-PUT /api/notification/:id
-16.Feed logic 
-GET /api/posts/feed/:userId
+
+14.2 Thông báo đã được xem 
+POST /api/notification/:userId
 
 
 Method	Ý nghĩa
