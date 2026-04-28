@@ -7,20 +7,23 @@ POST /api/auth/login
 
 2.User
 2.1 Lấy thông tin user
-GET /api/users/:id
+GET /api/users/:usedid
 
-2.2. Cập nhập users
-PUT /api/users/profile:id
+2.2. Cập nhập users 
+PUT /api/users/profile:usedid
 
-2.3 Tìm kiếm người dùng  Tìm kiếm người dùng theo usernam
+2.3 Tìm kiếm người dùng  Tìm kiếm người dùng theo tên
 GET /api/users/search?q=...: 
 
 3. Friends
 3.1 Gởi lời mời (gửi lời mời tới usedid)
 POST /api/friends/request/:userId 
 
-3.2. Chấp nhận
+3.2. 
+Chấp nhận
 POST /api/friends/accept/:requestId
+Từ chối
+POST /api/friends/reject/:requestId
 
 3.3. Danh sách bạn bè id người dùng được lấy từ ss hoặc ...)
 POST /api/friends 
@@ -82,29 +85,6 @@ GET/api/stories
 
 10.1 Xóa stories của chính mình
 DELETE/api/stories
-
-11. Group
-11.1 Tạo nhóm với bản thân
-POST /api/groups
-
-11.2 Lấy danh sách của các nhóm 
-GET /api/groups
-
-11.3 Lấy danh chi tiết nhóm
-PUT /api/groups/:id
-
-11.4 Xóa nhóm đó
-DELETE/api/groups/:id
-
-11.5 Rời nhóm đó
-PUT /api/groups/:id/leave
-
-12.Member
-12.1 Add thành viên vào nhóm
-POST /api/groups/:Groupid/:usedid
-
-12.2 Xóa thành viên khỏi nhóm
-DELETE /api/groups/:Groupid/:usedid
 
 
 13.CHAT
